@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { Box, ChakraProvider, Divider } from "@chakra-ui/react";
+import { Layout } from "./component/layout/Layout";
+import Menu from "./component/Header/Menu";
+import { MyService } from "./component/Services/MyService";
+import { Portfolio } from "./component/Portfolio/Portfolio";
+import theme from "./theme/theme";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ChakraProvider theme={theme}>
+      <Layout>
+        <Menu />
+      </Layout>
+      <Box mt={"6%"} display={{ base: "none", md: "block" }}>
+        <Divider w={"70%"} ml={"30%"} />
+      </Box>
+      <Layout>
+        <MyService />
+        <Portfolio />
+      </Layout>
+    </ChakraProvider>
   );
 }
 
